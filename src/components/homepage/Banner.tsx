@@ -7,39 +7,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Slider, { type Settings } from "react-slick";
-
-interface ArrowProps {
-    onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
 
 interface Slide {
     id: string;
     image: string;
 }
-
-const CarouselNextArrow = ({ onClick }: ArrowProps) => {
-    return (
-        <button
-            className="w-8 h-8 absolute right-5 bottom-3 md:top-1/2 cursor-pointer opacity-50 hover:opacity-100 z-10"
-            onClick={onClick}
-        >
-            <FaChevronRight className="text-4xl text-white" />
-        </button>
-    );
-};
-
-const CarouselPrevArrow = ({ onClick }: ArrowProps) => {
-    return (
-        <button
-            className="w-8 h-8 absolute right-18 md:right-auto md:left-5 bottom-3 md:top-1/2 cursor-pointer opacity-50 hover:opacity-100 z-10"
-            onClick={onClick}
-        >
-            <FaChevronLeft className="text-4xl text-white" />
-        </button>
-    );
-};
 
 const Banner = () => {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -67,8 +40,7 @@ const Banner = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 6000,
-        nextArrow: <CarouselNextArrow />,
-        prevArrow: <CarouselPrevArrow />,
+        arrows: false,
         beforeChange: (_: number, next: number) => {
             setActiveSlide(next);
         },
@@ -126,7 +98,7 @@ const Banner = () => {
                             <br /> Signature Fragrance
                         </h1>
 
-                        <p className="text-lg mb-5 max-w-md">
+                        <p className="text-base md:text-lg mb-5 max-w-md">
                             Explore hundreds of perfumes, compare fragrance
                             notes, discover community favorites, and build your
                             own fragrance collection.

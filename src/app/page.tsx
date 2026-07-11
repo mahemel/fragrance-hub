@@ -1,10 +1,21 @@
+import Banner from "@/components/homepage/Banner";
+import FragranceFamily from "@/components/homepage/FragranceFamily";
+import FragranceGuide from "@/components/homepage/FragranceGuide";
+import LatestBlogs from "@/components/homepage/LatestBlogs";
+import PopularBrands from "@/components/homepage/PopularBrands";
+import SeasonalPicks from "@/components/homepage/SeasonalPicks";
+import Trending from "@/components/homepage/Trending";
+
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        
-        <h2>Welcome to homepage</h2>
-      </main>
-    </div>
-  );
+    return (
+        <>
+            <Banner />
+            <Trending />
+            <FragranceFamily />
+            <SeasonalPicks />
+            <PopularBrands />
+            <FragranceGuide />
+            <LatestBlogs />
+        </>
+    );
 }

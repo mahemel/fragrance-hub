@@ -1,23 +1,23 @@
-import LoginForm from "@/components/login/LoginForm";
 import LoginWithGoogle from "@/components/login/LoginWithGoogle";
+import SignupForm from "@/components/login/SignUpForm";
 import SectionHeader from "@/ui/SectionHeader";
-import { Card, Spinner } from "@heroui/react";
+import { Card } from "@heroui/react";
 import Link from "next/link";
-import { Suspense } from "react";
 
 export const metadata = {
-    title: "ESSENCIO | Login",
+    title: "ESSENCIO | Register",
 };
 interface LoginPageProps {
     searchParams: Promise<{
         redirect?: string;
     }>;
 }
-const LoginPage = async ({ searchParams }: LoginPageProps) => {
+const RegisterPage = async ({ searchParams }: LoginPageProps) => {
     const params = await searchParams;
+
     const redirectTo = params?.redirect
-        ? `/register?redirect=${params?.redirect}`
-        : `/register`;
+        ? `/login?redirect=${params?.redirect}`
+        : `/login`;
 
     return (
         <div className="flex relative">
@@ -26,28 +26,20 @@ const LoginPage = async ({ searchParams }: LoginPageProps) => {
                     <Card className="w-full max-w-xl mx-auto rounded-none shadow-none p-0 bg-transparent">
                         <SectionHeader
                             center
-                            label="Welcome Back"
-                            title="Sign In"
-                            subtitle="Continue discovering amazing fragrances."
+                            label="Join Us"
+                            title="Create Account"
+                            subtitle="Join thousands of fragrance lovers and build your personal collection."
                         ></SectionHeader>
 
-                        <Suspense
-                            fallback={
-                                <div className="flex justify-center">
-                                    <Spinner></Spinner>
-                                </div>
-                            }
-                        >
-                            <LoginForm></LoginForm>
-                        </Suspense>
+                        <SignupForm />
 
-                        <p className="text-center mt-2 flex gap-1 justify-center text-sm md:text-base">
-                            Don&apos;t have an account?
+                        <p className="text-center mt-3 flex gap-1 justify-center text-sm md:text-base">
+                            Already have an account?
                             <Link
                                 href={redirectTo}
                                 className="text-dark-gold font-semibold"
                             >
-                                Register
+                                Sign in
                             </Link>
                         </p>
 
@@ -67,4 +59,4 @@ const LoginPage = async ({ searchParams }: LoginPageProps) => {
     );
 };
 
-export default LoginPage;
+export default RegisterPage;

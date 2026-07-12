@@ -26,16 +26,16 @@ export const auth = betterAuth({
     user: {
         additionalFields: {
             role: {
-                type: ["user", "artist", "admin"],
+                type: ["user", "admin"],
                 required: false,
                 defaultValue: "user",
             },
         },
     },
     socialProviders: {
-        github: {
-            clientId: process.env.GITHUB_CLIENT_ID as string,
-            clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+        google: {
+            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         },
     },
 });

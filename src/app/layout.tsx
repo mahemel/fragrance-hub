@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
+import { ToastContainer } from "react-toastify";
 
 const cormorant_garamond = Cormorant_Garamond({
     variable: "--font-cormorant_garamond",
@@ -34,6 +35,7 @@ export default function RootLayout({
                 <Navbar />
                 {children}
                 <Footer />
+                <ToastContainer position="top-center" />
             </body>
         </html>
     );

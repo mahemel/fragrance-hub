@@ -24,6 +24,23 @@ const LoginForm = () => {
     const searchParams = useSearchParams();
     const redirectTo = searchParams.get("redirect") || "/";
 
+    const handleDemoLogin = async () => {
+        const email = "demo@user.com";
+        const password = "Aa123456";
+
+        const { error } = await authClient.signIn.email({
+            email,
+            password,
+        });
+
+        if (error) {
+            toast.error(error.message);
+            return;
+        }
+
+        router.push("/");
+    };
+
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -41,14 +58,17 @@ const LoginForm = () => {
             toast.error(error.message);
             return;
         }
+        const userRole = (
+            data?.user as {
+                role?: "user" | "admin";
+            }
+        )?.role;
 
-        // if (data?.user?.role === "artist") {
-        //     router.push("/dashboard/artist");
-        // } else if (data?.user?.role === "admin") {
-        //     router.push("/dashboard/admin");
-        // } else {
-        router.push(redirectTo);
-        // }
+        if (userRole === "admin") {
+            router.push("/dashboard/admin");
+        } else {
+            router.push(redirectTo);
+        }
     };
     return (
         <Form className="flex flex-col gap-5" onSubmit={onSubmit}>
@@ -83,7 +103,7 @@ const LoginForm = () => {
                 <Label className="text-base">Password</Label>
                 <InputGroup className="text-field">
                     <InputGroup.Input
-                        className="shadow-none border-0 text-base px-0"
+                        className="shadow-none border-0 text-base px-0  placeholder-muted-foreground"
                         type={isVisible ? "text" : "password"}
                         placeholder="Enter your password"
                     />
@@ -108,10 +128,27 @@ const LoginForm = () => {
                 <FieldError />
             </TextField>
 
-            <div>
-                <Button type="submit" className="auth-btn">
+            <div className="text-center">
+                <Button
+                    type="submit"
+                    className="btn-accent rounded-none w-full"
+                >
                     Sign In
                 </Button>
+                <div className="flex items-center gap-4 my-3">
+                    <div className="flex-1 h-px bg-primary-gold"></div>
+                    <span className="text-[12px] text-dark-gold uppercase font-bold">
+                        Or
+                    </span>
+                    <div className="flex-1 h-px bg-primary-gold"></div>
+                </div>
+                <button
+                    onClick={handleDemoLogin}
+                    type="button"
+                    className="w-full h-10 text-sm bg-black text-white hover:border-foreground/35 transition-colors"
+                >
+                    Demo Login — No password needed
+                </button>
             </div>
         </Form>
     );

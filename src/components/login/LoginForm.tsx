@@ -71,7 +71,7 @@ const LoginForm = () => {
         }
     };
     return (
-        <Form className="flex flex-col gap-5" onSubmit={onSubmit}>
+        <Form className="flex flex-col gap-4 -mt-5" onSubmit={onSubmit}>
             <TextField
                 isRequired
                 name="email"
@@ -145,7 +145,7 @@ const LoginForm = () => {
                 <button
                     onClick={handleDemoLogin}
                     type="button"
-                    className="w-full h-10 text-sm bg-black text-white hover:border-foreground/35 transition-colors"
+                    className="w-full h-10 text-sm bg-black text-white hover:bg-coffee transition-colors cursor-pointer"
                 >
                     Demo Login — No password needed
                 </button>

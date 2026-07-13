@@ -20,7 +20,9 @@ const SectionHeader = ({
                 {title}
             </h2>
             {subtitle && (
-                <p className="text-sm md:text-base leading-relaxed tracking-wider max-w-2xl">
+                <p
+                    className={`text-sm md:text-base leading-relaxed tracking-wider max-w-2xl ${center ? "mx-auto" : ""}`}
+                >
                     {subtitle}
                 </p>
             )}

@@ -7,7 +7,7 @@ const Footer = () => {
     const navigateLinks = [
         {
             label: "Home",
-            path: "/home",
+            path: "/",
         },
         {
             label: "Explore Fragrances",

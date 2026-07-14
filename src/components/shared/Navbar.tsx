@@ -1,5 +1,6 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
+import { Session } from "@/types/user";
 import { Avatar, AvatarFallback, AvatarImage } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,10 +14,10 @@ const Navbar = () => {
     const router = useRouter();
     const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const { data: session, isPending } = authClient.useSession();
+    const { data, isPending } = authClient.useSession();
 
+    const session = data as Session | null;
     const user = session?.user;
 
     const navigateLinks = [
@@ -59,7 +60,7 @@ const Navbar = () => {
     };
     return (
         <nav
-            className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 bg-coffee`}
+            className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 bg-coffee border-b border-white/15`}
         >
             <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
                 <Link href="/" className="flex">
@@ -84,7 +85,7 @@ const Navbar = () => {
                             <div className="flex items-center gap-1">
                                 <Avatar className="rounded-full">
                                     <AvatarImage
-                                        src={user?.image}
+                                        src={user?.image || ""}
                                         alt={user?.name}
                                     />
                                     <AvatarFallback>
@@ -105,13 +106,13 @@ const Navbar = () => {
                         ) : (
                             <>
                                 <Link
-                                    href={"login"}
+                                    href={"/login"}
                                     className={`text-sm font-bold transition-colors `}
                                 >
                                     Login
                                 </Link>
                                 <Link
-                                    href={"register"}
+                                    href={"/register"}
                                     className={`text-sm transition-colors btn-accent_sm`}
                                 >
                                     Register

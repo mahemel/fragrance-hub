@@ -108,7 +108,8 @@ body {
 .btn-accent_sm {
     @apply border border-accent bg-accent text-white hover:bg-transparent hover:text-accent px-3 h-9 leading-8.5 font-bold text-sm uppercase duration-500;
 }
-label {
+label,
+.label {
     @apply text-[10px] tracking-[0.2em] uppercase font-bold text-muted-foreground block mb-2;
 }
 .text-field {

@@ -1,25 +1,19 @@
 export interface Fragrance {
-    id: string;
+    _id: string;
     name: string;
     brand: string;
-    year: number;
-    perfumer: string;
+    releaseYear: number;
     concentration: string;
     family: string;
     gender: string;
-    season: string[];
-    occasion: string[];
+    description: string;
     topNotes: string[];
     heartNotes: string[];
     baseNotes: string[];
-    longevity: number;
-    projection: number;
-    sillage: number;
-    versatility: number;
-    value: number;
+    seasons: string[];
+    occasions: string[];
     rating: number;
     reviewCount: number;
+    price: number;
     image: string;
-    description: string;
-    price: string;
 }

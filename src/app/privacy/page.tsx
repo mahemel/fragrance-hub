@@ -1,5 +1,8 @@
 import SectionHeader from "@/ui/SectionHeader";
 
+export const metadata = {
+    title: "ESSENCIO | Privacy Policy",
+};
 const PrivacyPage = () => {
     const privacyDetail = [
         {
@@ -25,7 +28,7 @@ const PrivacyPage = () => {
     ];
     return (
         <div>
-            <section className="section-padding bg-coffee text-white border-t border-white/15">
+            <section className="section-padding bg-coffee text-white">
                 <SectionHeader
                     label="Legal"
                     title="Privacy Policy"
@@ -34,7 +37,7 @@ const PrivacyPage = () => {
                 ></SectionHeader>
             </section>
 
-            <section className="max-w-3xl mx-auto px-6 py-12">
+            <section className="max-w-3xl mx-auto px-4 section-padding">
                 <div className="space-y-9">
                     {privacyDetail.map((s) => (
                         <div key={s.title}>

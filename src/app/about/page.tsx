@@ -3,6 +3,9 @@ import { FaUsers } from "react-icons/fa6";
 import { GiMicroscope } from "react-icons/gi";
 import { SiInfinityfree } from "react-icons/si";
 
+export const metadata = {
+    title: "ESSENCIO | About Us",
+};
 const AboutPage = () => {
     const aboutDetail = [
         {
@@ -23,7 +26,7 @@ const AboutPage = () => {
     ];
     return (
         <div>
-            <section className="section-padding bg-coffee text-white border-t border-white/15">
+            <section className="section-padding bg-coffee text-white">
                 <SectionHeader
                     label="About Us"
                     title="Our Passion for Fragrance"

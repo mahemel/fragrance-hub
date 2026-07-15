@@ -1,36 +1,187 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌸 FragranceHub
 
-## Getting Started
+> **Discover. Review. Collect. Find Your Signature Scent.**
 
-First, run the development server:
+FragranceHub is a modern, community-driven fragrance discovery platform where perfume enthusiasts can explore perfumes, discover new signature scents, read authentic community reviews, compare fragrances, and build their personal fragrance collections.
+
+Unlike traditional e-commerce perfume websites, FragranceHub focuses on fragrance discovery, education, and community engagement rather than online shopping.
+
+---
+
+## 🌐 Live Demo
+
+**Frontend:** https://fragrance-hub-pi.vercel.app/
+
+---
+
+# 📖 Project Overview
+
+Finding the perfect fragrance can be overwhelming. Thousands of perfumes exist, each with unique scent profiles, longevity, projection, and seasonal suitability.
+
+FragranceHub helps users make informed fragrance choices by combining detailed perfume information with community-driven reviews, ratings, fragrance comparisons, and personalized collections.
+
+Whether you're purchasing your first fragrance or expanding an existing luxury collection, FragranceHub provides an elegant platform to explore the world of perfumes.
+
+---
+
+# 🎯 Project Goals
+
+FragranceHub helps answer questions like:
+
+- Which fragrance is best for summer?
+- What perfume lasts the longest?
+- Which fragrances are suitable for office use?
+- What perfumes smell similar to Bleu de Chanel?
+- Which fragrance family matches my personality?
+- What perfumes are recommended for beginners?
+
+---
+
+# 👥 Target Audience
+
+- Perfume Enthusiasts
+- Beginners
+- Collectors
+- Fragrance Reviewers
+- Fashion Lovers
+- Luxury Lifestyle Fans
+
+---
+
+# ✨ Key Features
+
+Guests can:
+
+- Browse fragrances
+- Search perfumes
+- Filter fragrances
+- Sort fragrance listings
+- View fragrance details
+- Compare perfumes
+
+## Explore Fragrances
+
+Features include:
+
+- Search
+- Advanced Filters
+- Sorting
+- Pagination
+- Responsive Grid
+- Skeleton Loading
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- HeroUI
+- Motion (Framer Motion)
+- React Slick
+- React Icons
+- React Toastify
+
+---
+
+## Backend
+
+- Node.js
+- Express.js
+- TypeScript
+- MongoDB
+- MongoDB Node.js Driver
+- Better Auth
+- JWT Authentication (JOSE)
+
+---
+
+## Database
+
+- MongoDB Atlas
+
+---
+
+## Authentication & Security
+
+- Better Auth
+- MongoDB Adapter
+- JWT Authentication
+- Google OAuth
+- Protected Routes
+- Secure Session Management
+
+---
+
+## UI & Styling
+
+- Tailwind CSS v4
+- HeroUI
+- React Slick Carousel
+- Motion Animations
+- Responsive Design
+- Mobile-First Layout
+
+---
+
+# 📱 Responsive Design
+
+Fully optimized for:
+
+- Desktop
+- Tablet
+- Mobile
+
+---
+
+# 🚀 Installation
+
+## Clone Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/fragrancehub.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Frontend
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd fragrancehub-client
 
-## Learn More
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 🔑 Environment Variables
 
-## Deploy on Vercel
+## Frontend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```env
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=
+MONGODB_URI=
+MONGODB_NAME=
+MONGO_USER_COLLECTION=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+NEXT_PUBLIC_BASE_URL=
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Backend
+
+```env
+PORT=
+MONGODB_URI=
+MONGODB_NAME=
+CLIENT_URL=
+```
+
+---

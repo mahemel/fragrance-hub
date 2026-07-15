@@ -26,7 +26,7 @@ const AboutPage = () => {
     ];
     return (
         <div>
-            <section className="section-padding bg-coffee text-white">
+            <section className="section-top-padding bg-coffee text-white px-4">
                 <SectionHeader
                     label="About Us"
                     title="Our Passion for Fragrance"

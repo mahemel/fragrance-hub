@@ -37,7 +37,7 @@ const SeasonalPicks = () => {
                     title="Seasonal Picks"
                     subtitle="Find the perfect fragrance for every season, expertly curated by our community."
                 />
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     {SEASONS.map((s) => (
                         <Link
                             href="/explore"
@@ -56,7 +56,7 @@ const SeasonalPicks = () => {
                             <div
                                 className={`absolute inset-0 bg-linear-to-t ${s.overlay}`}
                             />
-                            <div className="absolute inset-0 flex flex-col justify-end p-5 text-left">
+                            <div className="absolute inset-0 flex flex-col justify-end p-3 text-left">
                                 <p className="text-white text-xl font-bold mb-1">
                                     {s.name}
                                 </p>

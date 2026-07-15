@@ -1,7 +1,16 @@
 import AddItems from "@/components/explore/AddItems";
+import { getUserSession } from "@/lib/api/session";
 import SectionHeader from "@/ui/SectionHeader";
+import { redirect } from "next/navigation";
 
-const AddItem = () => {
+export const metadata = {
+    title: "ESSENCIO | Add Fragrance",
+};
+const AddItem = async () => {
+    const user = await getUserSession();
+    if (!user) {
+        redirect("/login");
+    }
     return (
         <div>
             <section className="section-padding bg-coffee text-white">

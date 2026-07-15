@@ -24,10 +24,11 @@ const ContactForm = () => {
             toast.success(
                 "Thank you! We will reply to your message as soon as possible.",
             );
+            e.currentTarget.reset();
         }
     };
     return (
-        <Form className="flex flex-col gap-4 -mt-5" onSubmit={onSubmit}>
+        <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <TextField
                     isRequired

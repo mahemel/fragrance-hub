@@ -1,8 +1,10 @@
 import LoginForm from "@/components/login/LoginForm";
 import LoginWithGoogle from "@/components/login/LoginWithGoogle";
+import { getUserSession } from "@/lib/api/session";
 import SectionHeader from "@/ui/SectionHeader";
 import { Card, Spinner } from "@heroui/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export const metadata = {
@@ -14,6 +16,10 @@ interface LoginPageProps {
     }>;
 }
 const LoginPage = async ({ searchParams }: LoginPageProps) => {
+    const user = await getUserSession();
+    if (user) {
+        redirect(`/`);
+    }
     const params = await searchParams;
     const redirectTo = params?.redirect
         ? `/register?redirect=${params?.redirect}`
@@ -45,18 +51,18 @@ const LoginPage = async ({ searchParams }: LoginPageProps) => {
                             Don&apos;t have an account?
                             <Link
                                 href={redirectTo}
-                                className="text-dark-gold font-semibold"
+                                className="text-coffee font-semibold"
                             >
                                 Register
                             </Link>
                         </p>
 
                         <div className="flex items-center gap-4 my-1">
-                            <div className="flex-1 h-px bg-primary-gold"></div>
-                            <span className="text-[12px] text-dark-gold uppercase font-bold">
+                            <div className="flex-1 h-px bg-coffee"></div>
+                            <span className="text-[12px] text-coffee uppercase font-bold">
                                 Or
                             </span>
-                            <div className="flex-1 h-px bg-primary-gold"></div>
+                            <div className="flex-1 h-px bg-coffee"></div>
                         </div>
 
                         <LoginWithGoogle />

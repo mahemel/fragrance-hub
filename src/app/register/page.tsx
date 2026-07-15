@@ -1,8 +1,10 @@
 import LoginWithGoogle from "@/components/login/LoginWithGoogle";
 import SignupForm from "@/components/login/SignUpForm";
+import { getUserSession } from "@/lib/api/session";
 import SectionHeader from "@/ui/SectionHeader";
 import { Card } from "@heroui/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export const metadata = {
     title: "ESSENCIO | Register",
@@ -13,6 +15,10 @@ interface LoginPageProps {
     }>;
 }
 const RegisterPage = async ({ searchParams }: LoginPageProps) => {
+    const user = await getUserSession();
+    if (user) {
+        redirect(`/`);
+    }
     const params = await searchParams;
 
     const redirectTo = params?.redirect
@@ -37,18 +43,18 @@ const RegisterPage = async ({ searchParams }: LoginPageProps) => {
                             Already have an account?
                             <Link
                                 href={redirectTo}
-                                className="text-dark-gold font-semibold"
+                                className="text-coffee font-semibold"
                             >
                                 Sign in
                             </Link>
                         </p>
 
                         <div className="flex items-center gap-4 my-1">
-                            <div className="flex-1 h-px bg-primary-gold"></div>
-                            <span className="text-[12px] text-dark-gold uppercase font-bold">
+                            <div className="flex-1 h-px bg-coffee"></div>
+                            <span className="text-[12px] text-coffee uppercase font-bold">
                                 Or
                             </span>
-                            <div className="flex-1 h-px bg-primary-gold"></div>
+                            <div className="flex-1 h-px bg-coffee"></div>
                         </div>
 
                         <LoginWithGoogle />

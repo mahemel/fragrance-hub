@@ -1,12 +1,11 @@
 import { Fragrance } from "@/types/fragrance";
 import Image from "next/image";
-import { BiStar } from "react-icons/bi";
 import Link from "next/link";
 import { Chip } from "@heroui/react";
 
 const FragranceCard = ({ frag }: { frag: Fragrance }) => {
     return (
-        <div className="bg-card border border-border group cursor-pointer hover:shadow-lg transition-all duration-300 flex flex-col">
+        <div className="bg-card border border-border group hover:shadow-lg transition-all duration-300 flex flex-col">
             <div className="relative overflow-hidden aspect-square bg-stone-100 shrink-0">
                 <Image
                     src={frag.image}
@@ -31,30 +30,23 @@ const FragranceCard = ({ frag }: { frag: Fragrance }) => {
                 <h3 className="font-semibold text-black mb-2 line-clamp-1 text-base capitalize">
                     {frag.name}
                 </h3>
-                <div className="flex items-center gap-1.5 mb-2 flex-wrap">
-                    {frag.seasons.map((s) => (
-                        <span
-                            key={s}
-                            className="text-[10px] px-2 py-0.5 bg-secondary border border-border text-coffee tracking-wider"
-                        >
-                            {s}
-                        </span>
-                    ))}
-                </div>
+
+                <p className="text-sm mb-3">{frag.short_description}</p>
                 <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-1.5">
-                        <BiStar />
-                        {frag.rating || (
-                            <span className="uppercase text-[10px] tracking-widest relative top-px">
-                                N/A
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                        {frag.seasons.slice(0, 2).map((s) => (
+                            <span
+                                key={s}
+                                className="text-[10px] px-2 py-0.5 bg-secondary border border-border text-coffee tracking-wider"
+                            >
+                                {s}
                             </span>
-                        )}
+                        ))}
                     </div>
 
                     <Chip
-                        color="success"
                         variant="primary"
-                        className="rounded-full  font-bold text-[10px] uppercase"
+                        className="rounded-none px-2 bg-accent text-white  font-bold text-[10px] uppercase"
                     >
                         <Chip.Label>{frag.family}</Chip.Label>
                     </Chip>

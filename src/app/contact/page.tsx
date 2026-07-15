@@ -7,7 +7,7 @@ export const metadata = {
 const ContactPage = () => {
     return (
         <div>
-            <section className="section-padding bg-coffee text-white">
+            <section className="section-top-padding px-4 bg-coffee text-white">
                 <SectionHeader
                     label="Contact"
                     title="Get in Touch"

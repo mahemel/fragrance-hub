@@ -30,19 +30,28 @@ const Navbar = () => {
             path: "/explore",
         },
         {
-            label: "Blog",
-            path: "/blog",
-        },
-        {
-            label: "About Us",
+            label: "About",
             path: "/about",
         },
     ];
+
+    if (user) {
+        navigateLinks.push(
+            {
+                label: "Add Items",
+                path: "/explore/items/add",
+            },
+            {
+                label: "Manage Items",
+                path: "/explore/items/manage",
+            },
+        );
+    }
     const linkItem = navigateLinks.map((link, index) => (
         <li key={index}>
             <Link
                 href={link.path}
-                className={`text-sm transition-colors hover:opacity-100 ${pathname === link.path ? "text-accent" : "text-white"} hover:text-accent`}
+                className={`text-xs lg:text-sm transition-colors hover:opacity-100 ${pathname === link.path ? "text-accent" : "text-white"} hover:text-accent`}
             >
                 {link.label}
             </Link>
@@ -65,7 +74,7 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
                 <Link href="/" className="flex">
                     <Image
-                        className="w-30"
+                        className="w-24 lg:w-30"
                         src={"/assets/logo-white.svg"}
                         alt="Logo"
                         width={600}
@@ -73,7 +82,7 @@ const Navbar = () => {
                     />
                 </Link>
 
-                <ul className="hidden md:flex items-center gap-7 font-bold text-white">
+                <ul className="hidden md:flex items-center gap-4 lg:gap-7 font-bold text-white">
                     {linkItem}
                 </ul>
 

@@ -136,11 +136,11 @@ const LoginForm = () => {
                     Sign In
                 </Button>
                 <div className="flex items-center gap-4 my-3">
-                    <div className="flex-1 h-px bg-primary-gold"></div>
-                    <span className="text-[12px] text-dark-gold uppercase font-bold">
+                    <div className="flex-1 h-px bg-coffee"></div>
+                    <span className="text-[12px] text-coffee uppercase font-bold">
                         Or
                     </span>
-                    <div className="flex-1 h-px bg-primary-gold"></div>
+                    <div className="flex-1 h-px bg-coffee"></div>
                 </div>
                 <button
                     onClick={handleDemoLogin}

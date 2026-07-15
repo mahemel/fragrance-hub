@@ -14,9 +14,13 @@ import {
     TextField,
     TextArea,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
 const AddItems = () => {
+    const router = useRouter();
+
     const concentrationOptions = ["EDP", "EDT", "EDC", "Parfum"];
     const familyOptions = [
         "Floral",
@@ -91,6 +95,7 @@ const AddItems = () => {
 
         const gender = formData.get("gender") as string;
 
+        const short_description = formData.get("short_description") as string;
         const description = formData.get("description") as string;
 
         const topNotes = formData.getAll("top_notes") as string[];
@@ -112,6 +117,7 @@ const AddItems = () => {
             concentration,
             family,
             gender,
+            short_description,
             description,
             topNotes,
             heartNotes,
@@ -122,10 +128,14 @@ const AddItems = () => {
             price,
             userId,
         };
+        const result = (await addFragrance(fragranceData)) as {
+            insertedId: string;
+        };
 
-        const result = await addFragrance(fragranceData);
-
-        console.log(result);
+        if (result.insertedId) {
+            toast.success("Fragrance added succesfully!");
+            router.push("/explore/items/manage");
+        }
     };
 
     return (
@@ -209,6 +219,15 @@ const AddItems = () => {
                     Description
                 </Fieldset.Legend>
                 <FieldGroup>
+                    <TextField isRequired name="short_description">
+                        <Label>Short Description</Label>
+                        <TextArea
+                            rows={2}
+                            placeholder="Add a short description"
+                            className="w-full px-4  border border-black/12 bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground/35 text-base shadow-none rounded-none"
+                        />
+                        <FieldError />
+                    </TextField>
                     <TextField isRequired name="description">
                         <Label>Full Description</Label>
                         <TextArea

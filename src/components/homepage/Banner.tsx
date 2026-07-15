@@ -51,7 +51,7 @@ const Banner = () => {
             <Slider {...settings}>
                 {slides.map((slide, index) => (
                     <div key={slide.id} className="relative block!">
-                        <div className="h-130 md:h-auto md:aspect-16/7 relative w-full pointer-events-none overflow-hidden">
+                        <div className="h-130 md:h-auto md:aspect-video lg:aspect-16/6 relative w-full pointer-events-none overflow-hidden">
                             <motion.div
                                 animate={
                                     activeSlide === index
@@ -86,22 +86,21 @@ const Banner = () => {
             </Slider>
 
             <div className="absolute inset-0 flex items-center pointer-events-none">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="max-w-7xl mx-auto px-4 w-full">
                     <motion.div
                         className="text-white"
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
                     >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-none font-title">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-none font-title">
                             Find Your
                             <br /> Signature Fragrance
                         </h1>
 
                         <p className="text-base md:text-lg mb-5 max-w-md">
                             Explore hundreds of perfumes, compare fragrance
-                            notes, discover community favorites, and build your
-                            own fragrance collection.
+                            notes and build your own fragrance collection.
                         </p>
 
                         <div className="flex">

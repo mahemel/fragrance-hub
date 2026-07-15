@@ -14,30 +14,18 @@ const Footer = () => {
             path: "/explore",
         },
         {
-            label: "Blog",
-            path: "/blog",
-        },
-        {
-            label: "About Us",
+            label: "About",
             path: "/about",
-        },
-        {
-            label: "Contact",
-            path: "/contact",
         },
     ];
     const links = [
         {
-            path: "privacy",
+            path: "/privacy",
             label: "Privacy Policy",
         },
         {
-            path: "faq",
-            label: "FAQ",
-        },
-        {
-            path: "contact",
-            label: "Get in Touch",
+            label: "Contact",
+            path: "/contact",
         },
     ];
 
@@ -53,7 +41,7 @@ const Footer = () => {
     ];
     return (
         <footer className="bg-coffee mt-auto">
-            <div className="max-w-7xl mx-auto px-6 py-16">
+            <div className="max-w-7xl mx-auto px-4 py-16">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 mb-12">
                     <div className="col-span-2">
                         <Link
@@ -73,14 +61,21 @@ const Footer = () => {
                             finest fragrances.
                         </p>
                         <div className="flex gap-2.5">
-                            {[FaInstagram, BsTwitterX].map((Icon, i) => (
-                                <button
-                                    key={i}
-                                    className="w-8 h-8 border border-white flex items-center justify-center text-white/80 hover:text-white hover:border-white/50 transition-colors"
-                                >
-                                    <Icon className="w-3.5 h-3.5" />
-                                </button>
-                            ))}
+                            <Link
+                                href="https://www.instagram.com/@example"
+                                target="_blank"
+                                className="w-8 h-8 border border-white flex items-center justify-center text-white/80 hover:text-white hover:border-white/50 transition-colors"
+                            >
+                                <FaInstagram className="w-3.5 h-3.5" />
+                            </Link>
+
+                            <Link
+                                href="https://www.x.com/example"
+                                target="_blank"
+                                className="w-8 h-8 border border-white flex items-center justify-center text-white/80 hover:text-white hover:border-white/50 transition-colors"
+                            >
+                                <BsTwitterX className="w-3.5 h-3.5" />
+                            </Link>
                         </div>
                     </div>
 
@@ -110,7 +105,7 @@ const Footer = () => {
                             {families.slice(0, 5).map((f, i) => (
                                 <li key={i}>
                                     <Link
-                                        href="/"
+                                        href="/explore"
                                         className="block text-sm text-white/85 hover:text-white transition-colors"
                                     >
                                         {f.emoji} {f.name}

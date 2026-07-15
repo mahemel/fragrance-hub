@@ -30,6 +30,7 @@ export default function RootLayout({
         <html
             lang="en"
             className={`${cormorant_garamond.variable} ${manrope.variable} h-full antialiased`}
+            data-theme="light"
         >
             <body className="min-h-full flex flex-col bg-light-cream">
                 <Navbar />

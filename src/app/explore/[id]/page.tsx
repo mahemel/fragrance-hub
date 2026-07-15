@@ -1,7 +1,6 @@
-import FragranceReviews from "@/components/fragranceDeatil/FragranceReviews";
 import { getFragranceDetail } from "@/lib/actions/getFragrances";
-import { Review } from "@/types/review";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { BiStar } from "react-icons/bi";
 
 interface FragranceDetailProps {
@@ -13,36 +12,10 @@ const FragranceDetail = async ({ params }: FragranceDetailProps) => {
     const { id } = await params;
     const frag = await getFragranceDetail(id);
 
-    const reviews: Review[] = [
-        {
-            user: "Alexandra M.",
-            rating: 5,
-            date: "June 10, 2024",
-            comment:
-                "Absolutely stunning. The dry-down is pure sophistication — warm, woody, and unforgettable. I get compliments every single time I wear this. My signature scent for over a year now.",
-        },
-        {
-            user: "James K.",
-            rating: 4,
-            date: "June 3, 2024",
-            comment:
-                "Excellent longevity and projection. Slightly linear but that is not necessarily a bad thing — this makes it a reliable, no-thinking-required office scent that stays polished all day.",
-        },
-        {
-            user: "Sophie L.",
-            rating: 5,
-            date: "May 28, 2024",
-            comment:
-                "My go-to for winter evenings. Nothing else comes close for that combination of warmth and understated sophistication. The base notes are particularly beautiful — rich and enveloping.",
-        },
-        {
-            user: "Marcus T.",
-            rating: 4,
-            date: "May 20, 2024",
-            comment:
-                "The opening is a bit sharp but the heart and base are where this fragrance truly shines. Give it 20 minutes and you will be rewarded with something genuinely special and worth the price.",
-        },
-    ];
+    if (!frag) {
+        notFound();
+    }
+
     return (
         <div className="section-padding">
             <div className="max-w-7xl mx-auto px-4">
@@ -54,6 +27,7 @@ const FragranceDetail = async ({ params }: FragranceDetailProps) => {
                             height={800}
                             alt={frag.name}
                             className="w-full h-full object-cover"
+                            loading="eager"
                         />
                     </div>
 
@@ -61,17 +35,14 @@ const FragranceDetail = async ({ params }: FragranceDetailProps) => {
                         <p className="text-xs tracking-[0.25em] uppercase mb-2 text-accent font-bold">
                             {frag.brand}
                         </p>
-                        <h1 className="text-4xl md:text-5xl font-title font-bold text-foreground mb-5 leading-tight">
+                        <h1 className="text-4xl md:text-5xl font-title font-bold text-foreground mb-2 leading-tight">
                             {frag.name}
                         </h1>
 
-                        <div className="flex items-center mb-7 gap-2">
-                            <BiStar />
-                            {frag.rating || (
-                                <span className="uppercase text-[10px] tracking-widest relative top-px">
-                                    No Reviews Available
-                                </span>
-                            )}
+                        <div className="mb-5">
+                            <p className="leading-relaxed text-base">
+                                {frag.short_description}
+                            </p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-px bg-border border border-border mb-7">
@@ -141,18 +112,17 @@ const FragranceDetail = async ({ params }: FragranceDetailProps) => {
                                 </span>
                             ))}
                         </div>
-
-                        <div className="border-t border-stone-300 pt-5">
-                            <h2 className="text-2xl font-bold text-foreground mb-4">
-                                About This Fragrance
-                            </h2>
-                            <p className="leading-relaxed text-base">
-                                {frag.description}
-                            </p>
-                        </div>
                     </div>
                 </div>
 
+                <div className="mb-12 py-12 border-b border-t border-border">
+                    <h2 className="text-2xl font-bold text-foreground mb-4">
+                        About This Fragrance
+                    </h2>
+                    <p className="leading-relaxed text-base">
+                        {frag.description}
+                    </p>
+                </div>
                 <div className="mb-12 pb-12 border-b border-border">
                     <h2 className="text-2xl font-bold text-foreground mb-8 text-center">
                         Fragrance Pyramid
@@ -191,7 +161,7 @@ const FragranceDetail = async ({ params }: FragranceDetailProps) => {
                             </div>
                         </div>
                         <div className="w-px h-3 bg-rose-200" />
-                        <div className="w-96 border border-stone-300 bg-white p-5 text-center">
+                        <div className="w-full sm:w-96 border border-stone-300 bg-white p-5 text-center">
                             <p className="text-[10px] font-bold text-stone-600 tracking-[0.25em] uppercase mb-3">
                                 Base Notes · 2+ hrs (dry-down)
                             </p>
@@ -208,8 +178,6 @@ const FragranceDetail = async ({ params }: FragranceDetailProps) => {
                         </div>
                     </div>
                 </div>
-
-                <FragranceReviews reviews={reviews} />
             </div>
         </div>
     );

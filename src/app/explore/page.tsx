@@ -1,27 +1,43 @@
-import FragranceCard from "@/components/homepage/FragranceCard";
-import { getFragrances } from "@/lib/actions/getFragrances";
+import FragranceListingContainer from "@/components/explore/FragranceListingContainer";
+import { getFilteredFragrances } from "@/lib/actions/getFragrances";
 import SectionHeader from "@/ui/SectionHeader";
+interface ExplorePageProps {
+    searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+export const metadata = {
+    title: "ESSENCIO | Explore Fragrances",
+};
+const ExplorePage = async ({ searchParams }: ExplorePageProps) => {
+    const filters = await searchParams;
+    const page = Number(filters.page || 1);
+    const perPage = 8;
 
-const ExplorePage = async () => {
-    const fragrances = await getFragrances();
+    const querySearch = new URLSearchParams({
+        ...filters,
+        page: page.toString(),
+        limit: perPage.toString(),
+    });
+    const queryString = querySearch.toString();
+
+    // const { artWorks = [], total = 0 } = await getFilteredArtworks(queryString);
+    const { fragrances = [], total = 0 } =
+        await getFilteredFragrances(queryString);
 
     return (
         <div>
-            <section className="section-padding bg-coffee text-white">
+            <div className="max-w-7xl mx-auto px-4 section-padding">
                 <SectionHeader
                     label="Explore"
                     title="Discover Fragrances"
-                    subtitle="Search our curated database of 8+ perfumes by notes, brand, family, and more."
+                    subtitle="Search our curated collection of perfumes by brand, gender, and more."
                     center
                 ></SectionHeader>
-            </section>
 
-            <div className="max-w-7xl mx-auto px-4 section-padding">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {fragrances.map((frag, index) => (
-                        <FragranceCard key={index} frag={frag} />
-                    ))}
-                </div>
+                <FragranceListingContainer
+                    filters={filters}
+                    fragrances={fragrances || []}
+                    total={total}
+                />
             </div>
         </div>
     );

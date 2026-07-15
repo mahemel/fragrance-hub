@@ -6,6 +6,7 @@ export interface Fragrance {
     concentration: string;
     family: string;
     gender: string;
+    short_description: string;
     description: string;
     topNotes: string[];
     heartNotes: string[];

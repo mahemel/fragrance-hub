@@ -28,7 +28,7 @@ const PrivacyPage = () => {
     ];
     return (
         <div>
-            <section className="section-padding bg-coffee text-white">
+            <section className="section-top-padding bg-coffee text-white">
                 <SectionHeader
                     label="Legal"
                     title="Privacy Policy"

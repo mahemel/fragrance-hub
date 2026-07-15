@@ -18,7 +18,7 @@ const Trending = async () => {
                     />
                     <Link
                         href="/explore"
-                        className="hidden md:flex items-center gap-1.5 text-sm text-dark-gold hover:text-black transition-colors mb-5"
+                        className="hidden md:flex items-center gap-1.5 text-sm text-coffee hover:text-black transition-colors mb-5"
                     >
                         View all <TbArrowRightDashed className="w-3.5 h-3.5" />
                     </Link>
